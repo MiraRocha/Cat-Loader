@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    background-color: #e6dcdc;
+}
+
+.box {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.cat {
+    position: relative;
+    width: 100%;
+    background-color: #e6dcdc;
+    width: 20em;
+    overflow: hidden;
+}
+
+.cat::before {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.body,
+.tail,
+.head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation: rotating 2.79s cubic-bezier(0.65, 0.54, 0.12, 0.93) infinite;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(720deg);
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+.body::before,
+.tail::before,
+.head::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background-size: 200%;
+    background-repeat: no-repeat;
+    background-image: url("https://codetheworld.io/wp-content/uploads/2024/03/cat.png");
+}
+
+.head::before {
+    top: 0;
+    right: 0;
+    background-position: 100% 0%;
+    transform-origin: 0% 100%;
+    transform: rotate(90deg);
+}
+
+.tail {
+    animation-delay: 0.2s;
+}
+
+.tail::before {
+    left: 0;
+    bottom: 0;
+    background-position: 0% 100%;
+    transform-origin: 100% 0%;
+    transform: rotate(-30deg);
+
+}
+
+.body {
+    animation-delay: 0.1s;
+}
+
+.body:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+
+.body::before {
+    right: 0;
+    bottom: 0;
+    background-position: 100% 100%;
+    transform-origin: 0% 0%;
+}
+
+.cat:hover>* {
+    animation-play-state: paused;
+}
+
+.cat:active>* {
+    animation-play-state: running;
+}
+
+.credits {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    text-align: center;
+    color: #333;
+    position: fixed;
+    bottom: 10px; 
+    width: 100%;
+    padding-bottom: 10px;
+}
+
